@@ -10,3 +10,5 @@ Can use PyCharm or any other text editor or IDLE. But make sure the mentioned li
 
 Author: Written by esha
 
+Contributing: If wants to contribute then send a pull request.
+
