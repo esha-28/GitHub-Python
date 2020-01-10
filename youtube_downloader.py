@@ -34,11 +34,15 @@ def play():
 
 def send():
     global url
-    song = i.get()
-    query_string = urllib.parse.urlencode({"search_query": song})
-    html_cont = urllib.request.urlopen("http://www.youtube.com/results?" + query_string)
-    search_res = re.findall(r'href=\"\/watch\?v=(.{11})', html_cont.read().decode())
-    url = "http://www.youtube.com/watch?v=" + search_res[0]
+
+    if "https://www.youtube.com/watch?v=" in i.get() or "http://www.youtube.com/watch?v=" in i.get():
+        url=i.get()
+    else:
+        song = i.get()
+        query_string = urllib.parse.urlencode({"search_query": song})
+        html_cont = urllib.request.urlopen("http://www.youtube.com/results?" + query_string)
+        search_res = re.findall(r'href=\"\/watch\?v=(.{11})', html_cont.read().decode())
+        url = "https://www.youtube.com/watch?v=" + search_res[0]
     d3 = pt.init()
     d3.say("for playing the music, press the play button, and, for download, choose the path for save download video")
     voices2 = d3.getProperty('voices')
